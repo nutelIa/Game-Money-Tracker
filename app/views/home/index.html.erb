@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		GameMoneyTracker
+	</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+</head>
+
+<% if user_signed_in? %>
+	<% if current_user.games.empty? %>
+    	<p>No Saved Games!</p>
+    <% else %>
+    	<% current_user.games.each do |game| %>
+			<li> <%= link_to game.name, game_path(id: game) %> </li>
+    	<% end %>
+	<% end %>
+	<%= link_to 'New Monopoly Game', games_new_path%>
+<% end %>

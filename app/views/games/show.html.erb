@@ -1,0 +1,23 @@
+<% if @game.players.empty? %>
+    <p>No Players!</p>
+<% else %>
+    <% @game.players.each do |player| %>
+		<h3> <%= player.name %> </h3>
+		<li> money: <%= player.money %> </li>
+		<%= simple_form_for player, url: change_path(id: player), method: :patch do |f| %>
+			<div>
+				<%=%>
+				<%= f.text_field :amount, placeholder: "amount" %>
+			</div>
+			<div>
+				<%= f.submit "+", :name => '+' %>
+				<%= f.submit "-", :name => '-' %>
+			</div>
+		<% end %>
+    <% end %>
+<% end %>
+
+<%= @text%>
+
+<br>
+<%= link_to "New Player", new_game_player_path(@game) %>
