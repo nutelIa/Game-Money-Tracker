@@ -19,30 +19,23 @@ class PlayersController < ApplicationController
 
 	def change
 		@player = Player.find(params[:id])
+		# @player.update_column(:money, 5000)
 		@amount = params[:amount].to_i
-		@text = 'hi'
-		if adding?
-			@player.update_column(:money, @player.money + @amount)
+		@text = @player.amount
+		if params[:commit] == "+"
 			@text = 'attempted add'
+			@player.update_column(:money, @player.money + @amount)
 		end
-		if subtracting?
+		if params[:commit] == "-"
 			@player.update_column(:money, @player.money - @amount)
 			@text = 'attempted subract'
 		end
-		redirect_to :back
+     	redirect_to :back
 	end
 
 	private
 
 	def player_params
 		params.require(:player).permit(:name)
-	end
-
-	def adding?
-		params[:commit] == "+"
-	end
-
-	def subtracting?
-		params[:commit] == "-"
 	end
 end

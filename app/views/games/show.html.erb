@@ -4,20 +4,20 @@
     <% @game.players.each do |player| %>
 		<h3> <%= player.name %> </h3>
 		<li> money: <%= player.money %> </li>
-		<%= simple_form_for player, url: change_path(id: player), method: :patch do |f| %>
+		<%= form_tag change_path ({:id => player.id}) do %>
 			<div>
-				<%=%>
-				<%= f.text_field :amount, placeholder: "amount" %>
+				<%= text_field_tag 'amount',nil, placeholder: "amount" %>
 			</div>
 			<div>
-				<%= f.submit "+", :name => '+' %>
-				<%= f.submit "-", :name => '-' %>
-			</div>
+				<%= submit_tag "+", :name => "+[#{player.amount}]" %>
+				<%= submit_tag "-", :name =>  "-[#{player.amount}]"%>
+			</div>		
 		<% end %>
+		<%= @text%>
     <% end %>
 <% end %>
 
-<%= @text%>
 
+<br>
 <br>
 <%= link_to "New Player", new_game_player_path(@game) %>

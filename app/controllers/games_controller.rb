@@ -15,6 +15,17 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find(params[:id])
+		# @player = Player.find(params[:id])
+		# @amount = params[:amount].to_i
+		# @text = @player.amount
+		# if params[:commit] == "+"
+		# 	@text = 'attempted add'
+		# 	@player.update_column(:money, @player.money + @amount)
+		# end
+		# if params[:commit] == "-"
+		# 	@player.update_column(:money, @player.money - @amount)
+		# 	@text = 'attempted subract'
+		# end
 	end
 
 	private

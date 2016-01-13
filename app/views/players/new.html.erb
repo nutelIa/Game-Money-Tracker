@@ -1,8 +1,8 @@
 <div>Create New Player</div>
 <%= simple_form_for [@game, @player] do |f| %>
-  <%= f.input :name, :input_html => { :class => 'field', :id => "name"}, placeholder: 'Name', :label => "" %>
-  <%= f.input :color, :input_html => { :class => 'field', :id => "color"}, placeholder: 'i.e. Red', :label => "" %>
-  <%= f.input :token, :input_html => { :class => 'field', :id => "token"}, placeholder: 'i.e. Shoe', :label => "" %>
+  <%= f.text_field :name, :input_html => { :class => 'field', :id => "name"}, placeholder: 'Name', :label => "" %>
+  <%= f.text_field :color, :input_html => { :class => 'field', :id => "color"}, placeholder: 'i.e. Red', :label => "" %>
+  <%= f.text_field :token, :input_html => { :class => 'field', :id => "token"}, placeholder: 'i.e. Shoe', :label => "" %>
   <%= f.submit 'Create Player'%>
 <% end %>
 </div>
