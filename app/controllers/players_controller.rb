@@ -19,14 +19,13 @@ class PlayersController < ApplicationController
 
 	def change
 		@player = Player.find(params[:id])
-		# @player.update_column(:money, 5000)
 		@amount = params[:amount].to_i
 		@text = @player.amount
-		if params[:commit] == "+"
+		if params["+"]
 			@text = 'attempted add'
 			@player.update_column(:money, @player.money + @amount)
 		end
-		if params[:commit] == "-"
+		if params["-"]
 			@player.update_column(:money, @player.money - @amount)
 			@text = 'attempted subract'
 		end
