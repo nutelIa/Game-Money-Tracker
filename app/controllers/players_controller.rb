@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
 		if @player.save
 			@player.update_column(:game_id, @game)
 			@player.update_column(:money, 1500)
-			redirect_to root_path
+			redirect_to @game
 		else
 			render 'new'
 		end
@@ -19,8 +19,7 @@ class PlayersController < ApplicationController
 
 	def change
 		@player = Player.find(params[:id])
-		@amount = params[:amount].to_i
-		@text = @player.amount
+		@amount = params[:thing].to_i
 		if params["+"]
 			@text = 'attempted add'
 			@player.update_column(:money, @player.money + @amount)

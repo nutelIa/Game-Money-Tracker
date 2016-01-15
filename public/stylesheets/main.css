@@ -1,0 +1,127 @@
+@font-face {
+	font-family: pricedown, kabel;
+	src: url(http://www.1001fonts.com/pricedown-font.html);
+	src: url(http://www.fontspace.com/alan-carr/kabel);
+}
+
+h1 {
+	font-family: pricedown;
+	font-size: 60px;
+	color:#551A8B;
+}
+
+a.title:link, a.title:visited, a.title:active{
+	color:#551A8B;
+}
+
+body {
+	font-family: "Verdana", "Helvetica", "Times New Roman";
+	background-color: white;
+}
+
+.wrapper {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	
+	background-color: #70c8a4;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+.header{
+	background-color: #70c8a4;
+	flex: 1 100%;
+	
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: 52% top;
+	z-index: 1000;
+}
+
+.button, .selected, .rightbutton{
+	display: inline-block;
+	margin: 0px 1px;
+	padding: 10px;
+	cursor: pointer;
+	float: left;
+	color: #551A8B;
+	background: rgba(54, 25, 25, .1)
+
+	-webkit-transition: background .5s ease;
+  	-moz-transition: background .5s ease;
+  	-o-transition: background .5s ease;
+  	transition: background .5s ease;
+}
+
+.button:hover, .selected:hover, .rightbutton:hover{
+	background: #87b1a0;
+}
+
+.rightbutton{
+	float: right;
+}
+
+a{ 
+	text-decoration: none;
+	color: white;
+}
+
+.gamebox {
+	color: white;
+	background-color: #70c8a4;
+	padding: 7px;
+	border-radius: 5px;
+	width: 172px;
+	margin: 10px 20px 10px 20px;
+	box-shadow: 5px 5px 5px #8eaa9e;
+	float:left;
+}
+
+a.gamebox:link, a.gamebox:visited, a.gamebox:active{
+	color: white;
+}
+
+.gameboxtitle {
+	display: inline-block;
+	margin: 0px 1px;
+	padding: 2px;
+	cursor: pointer;
+	color: #551A8B;
+	background: rgba(54, 25, 25, .1)
+
+	-webkit-transition: background .5s ease;
+  	-moz-transition: background .5s ease;
+  	-o-transition: background .5s ease;
+  	transition: background .5s ease;
+}
+
+a.gameboxtitle:link, a.gameboxtitle:visited, a.gameboxtitle:active{
+	color:#551A8B;
+}
+
+.greenbox {
+	background-color: green;
+	padding: 10px;
+	border-radius: 5px;
+	width: 196px;
+	margin: 10px;
+	height: 17px;
+	clear: both;
+	font-family: kabel;
+}
+
+.gamebox:hover {
+	background: #52e6aa;
+}
+
+.greenbox:hover {
+	background: #1b4634;
+}

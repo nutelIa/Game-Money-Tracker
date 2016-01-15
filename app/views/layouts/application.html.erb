@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GameMoneyTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title> GameMoneyTracker </title>
+  <%= stylesheet_link_tag "main" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <header class="navbar  navbar-inverse">
-    <div class="navbar-class">
-      <div class="container">
-
-        <ul class="nav navbar-nav">
-      <%= link_to 'Home', root_path %>
+<div class="wrapper">
+  <header class="header">
+    <h1 class='button'> <%= link_to "Game Money Tracker", root_path, { :class => 'title'} %> </h1>
       <% if not user_signed_in? %>
-				<%= link_to 'Sign Up', new_user_registration_path %>
-				<%= link_to 'Log In', new_user_session_path %>
-			<% else %>
-				<div><%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %></div>
-			<% end %>
-        </ul>
-
-
-      </div>
-    </div>
+        <div class="rightbutton"><%= link_to 'Sign Up', new_user_registration_path%></div>
+        <div class="rightbutton"><%= link_to 'Log In', new_user_session_path%></div>
+      <% else %>
+        <div class='rightbutton'><%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %></div>
+      <% end %>
+      <div class='rightbutton'><%= link_to 'About', home_about_path%></div>
   </header>
+</div>
+
+<br>
 
 <%= yield %>
 

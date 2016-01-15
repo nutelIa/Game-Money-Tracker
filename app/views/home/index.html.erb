@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>
-		GameMoneyTracker
-	</title>
-	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
-</head>
 
+<body>
 <% if user_signed_in? %>
 	<% if current_user.games.empty? %>
     	<p>No Saved Games!</p>
     <% else %>
     	<% current_user.games.each do |game| %>
-			<li> <%= link_to game.name, game_path(id: game) %> </li>
+			<div class='gamebox'> 
+				<div class='button', style='font-family:kabel;'><%= link_to game.name, game_path(id: game), { class: 'gameboxtitle'} %></div> <br>
+				 &nbsp;&nbsp;&nbsp;<%= game.players.count %> players 
+				 <br>
+			</div>
     	<% end %>
 	<% end %>
-	<%= link_to 'New Monopoly Game', games_new_path%>
+	<div class='greenbox'> <%= link_to 'New Monopoly Game', games_new_path %> </div>
 <% end %>
+</body>
+
+</html>

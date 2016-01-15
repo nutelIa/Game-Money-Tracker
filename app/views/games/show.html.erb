@@ -1,23 +1,30 @@
+<h2 class='title', style='font-family:kabel;'> Session Name: <%= @game.name %> 
+	<div style='display: inline-block;'><%= button_to 'Delete', delete_path(id: @game), method: :patch, data: {confirm: 'Are you sure you want to delete this?' }%></div></h2>
+
 <% if @game.players.empty? %>
     <p>No Players!</p>
 <% else %>
     <% @game.players.each do |player| %>
-		<h3> <%= player.name %> </h3>
-		<li> money: <%= player.money %> </li>
-		<%= form_tag change_path ({:id => player.id}) do %>
-			<div>
-				<%= text_field_tag 'amount',nil, placeholder: "amount" %>
-			</div>
-			<div>
-				<%= submit_tag "+", :name => "+" %>
-				<%= submit_tag "-", :name =>  "-"%>
-			</div>		
-		<% end %>
-		<%= @text%>
-    <% end %>
+    	<div class='gamebox', style='background-color:player.color;'>
+			<h3> <%= player.name %> </h3> 
+			money: <%= player.money %>
+			<%= form_tag change_path ({:id => player.id}) do %>
+				<div>
+					<%= text_field_tag 'thing',nil, placeholder: "amount" %>
+				</div>
+				<div>
+					<%= submit_tag "+", :name => "+" %>
+					<%= submit_tag "-", :name =>  "-" %>
+				</div>		
+			<% end %>
+			<%= button_to 'Delete', delete_path(id: player), method: :patch, data: { confirm: 'Are you sure you want to delete this?' }%>
+		</div>
+	    <% end %>
 <% end %>
 
 
 <br>
 <br>
-<%= link_to "New Player", new_game_player_path(@game) %>
+<% if @game.user_id = current_user %>
+	<div class='greenbox', style='width:105px;'><%= link_to "New Player", new_game_player_path(@game) %></div>
+<% end %>
