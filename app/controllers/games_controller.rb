@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 		if @game.save
 			@game.update_column(:user_id, current_user)
 			@game.update_column(:transfer, 0)
-			redirect_to root_path
+			redirect_to "http://gamemoneytracker.herokuapp.com/"
 		else
 			render 'new'
 		end
