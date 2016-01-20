@@ -1,6 +1,8 @@
-<div>Create New Session</div>
-<%= simple_form_for @game do |f| %>
-  <%= f.input :name, :input_html => { :class => 'field', :id => "name"}, placeholder: 'Name this Session', :label => "" %>
-  <%= f.submit 'Create new Session'%>
-<% end %>
+<div class='signinbubble'>
+	<div class='pagetitle' style='text-align:center;'>Create New Session</div>
+	<%= simple_form_for @game do |f| %>
+	  <%= f.input :name, :input_html => { :class => 'field', :id => "name"}, placeholder: 'Name this Session', :label => "" %>
+	  <%= f.submit 'Create new Game', class: 'clicky'%>
+	<% end %>
+	</div>
 </div>

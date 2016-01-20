@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GameMoneyTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title> GameMoneyTracker </title>
+  <%= stylesheet_link_tag "main" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-  <p class="notice"><%= notice %></p>
+  <% if notice %>
+    <p class="notice" ><%= notice %></p>
+  <% end %>
+  <% if alert %>
   <p class="alert"><%= alert %></p>
+  <% end %>
 
-  <header class="navbar  navbar-inverse">
-    <div class="navbar-class">
-      <div class="container">
-
-        <ul class="nav navbar-nav">
-      <%= link_to 'Home', root_path %>
-      <% if not user_signed_in? %>
-				<%= link_to 'Sign Up', new_user_registration_path %>
-				<%= link_to 'Log In', new_user_session_path %>
-			<% else %>
-				<div><%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %></div>
-			<% end %>
-        </ul>
-
-
-      </div>
-    </div>
+<div class="wrapper">
+  <header class="header">
+    <h1 class='button'> <%= link_to "Game Money Tracker", root_path, class: 'title' %> </h1>
+      <% if user_signed_in? %>
+        <div><%= link_to 'Log Out', destroy_user_session_path, class: 'rightbutton', :method=>'delete' %></div>
+      <div><%= link_to 'Edit User', edit_user_registration_path, class: 'rightbutton' %></div>
+      <% end %>
+      <div><%= link_to 'About', home_about_path, class: 'rightbutton'%></div>
   </header>
+</div>
+
+<br>
 
 <%= yield %>
 

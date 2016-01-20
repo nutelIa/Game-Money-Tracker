@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>
-		GameMoneyTracker
-	</title>
-	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
-</head>
 
+<body>
 <% if user_signed_in? %>
 	<% if current_user.games.empty? %>
     	<p>No Saved Games!</p>
     <% else %>
     	<% current_user.games.each do |game| %>
-			<li> <%= link_to game.name, game_path(id: game) %> </li>
+			<div class='gamebox'> 
+				<div><%= link_to game.name, game_path(id: game), class: 'gameboxtitle' %></div>
+				<br>
+				<div style='padding:0px 7px 7px 0px; float:right;'> <%= game.players.count %> players </div>
+			</div>
     	<% end %>
 	<% end %>
-	<%= link_to 'New Monopoly Game', games_new_path%>
+	<div class='greenbox'> <%= link_to 'New Monopoly Game', games_new_path, class: 'greenboxtitle' %>
+<% else %>
+	<div class="signinbubble">
+  		<div class="bigbutton"><%= link_to 'Log In', user_session_path %></div>
+  		<div class="bigbutton"><%= link_to 'Sign Up', new_user_registration_path %></div>
+	</div>
+	<div class='signinbubble' style='padding:20px'>
+		<%= link_to 'Why do I need to make an account?', home_about_path %>
+	</div>
 <% end %>
+</body>
+
+</html>
