@@ -33,16 +33,16 @@ body {
 	background-color: #70c8a4;
 	width: 100%;
 	margin: auto;
-	text-align: center;
+	text-align: left;
 }
 
 .header{
 	background-color: #70c8a4;
 	flex: 1 100%;
 	
-	text-align: center;
+	text-align: left;
 	background-repeat: no-repeat;
-	background-position: 52% top;
+	/*background-position: 52% top;*/
 	z-index: 1000;
 }
 
@@ -52,7 +52,7 @@ body {
 	padding: 10px;
 	cursor: pointer;
 	float: left;
-	color: #551A8B;
+	color: white;
 	background: rgba(54, 25, 25, .1)
 
 	-webkit-transition: background .5s ease;
@@ -74,37 +74,32 @@ a{
 	color: white;
 }
 
-.gamebox {
+.gamebox, .playerbox, .gameboxtitle {
 	color: white;
 	background-color: #70c8a4;
-	padding: 7px;
-	border-radius: 5px;
-	width: 172px;
-	margin: 10px 20px 10px 20px;
-	box-shadow: 5px 5px 5px #8eaa9e;
+	padding: 7px 7px 7px 7px;
+	width: auto;
+	margin: 10px 15px 10px 10px;
 	float:left;
 }
 
-a.gamebox:link, a.gamebox:visited, a.gamebox:active{
+.gamebox, .playerbox {
+	box-shadow: 5px 5px 5px #8eaa9e;
+	border-radius: 5px;
+}
+
+a.gamebox:link, a.gamebox:visited, a.gamebox:active, a.playerbox:link, a.playerbox:visited, a.playerbox:active{
 	color: white;
 }
 
-.gameboxtitle {
-	display: inline-block;
-	margin: 0px 1px;
-	padding: 2px;
-	cursor: pointer;
-	color: #551A8B;
-	background: rgba(54, 25, 25, .1)
-
-	-webkit-transition: background .5s ease;
-  	-moz-transition: background .5s ease;
-  	-o-transition: background .5s ease;
-  	transition: background .5s ease;
+.playerbox {
+	padding: 0px 7px 20px 7px;
+	width: 210px;
 }
 
 a.gameboxtitle:link, a.gameboxtitle:visited, a.gameboxtitle:active{
 	color:#551A8B;
+	font-family:kabel;
 }
 
 .greenbox {
@@ -112,16 +107,175 @@ a.gameboxtitle:link, a.gameboxtitle:visited, a.gameboxtitle:active{
 	padding: 10px;
 	border-radius: 5px;
 	width: 196px;
-	margin: 10px;
+	margin: 10px 10px 10px 10px;
 	height: 17px;
 	clear: both;
 	font-family: kabel;
+	text-align:center;
 }
 
-.gamebox:hover {
+a.greenboxtitle:link, a.greenboxtitle:visited, a.greenboxtitle:active {
+	color:lightgreen;
+}
+
+.gamebox:hover, .gameboxtitle:hover {
 	background: #52e6aa;
 }
 
 .greenbox:hover {
 	background: #1b4634;
+}
+
+.plus, .minus, .delete, .edit, .transferback{
+	background-color: orangered;
+	color: white;
+	padding: 0px 3px;
+	border-radius: 5px;
+	font-weight: 575;
+	font-size: 15px;
+	width: auto;
+	text-align: center;
+}
+
+.plus{
+	background-color:#70c8a4;
+}
+
+.edit {
+	background-color: lightblue;
+	color:indigo;
+}
+
+.delete{
+	font-size: 11px;
+}
+
+.transferback {
+	font-size: 20px;
+	margin: 7px 0px 0px 0px;
+	background-color:grey;
+}
+
+.signinbubble{
+	background-color: #551A8B;
+	padding: 40px;
+	width: 300px;
+	height: auto;
+	margin: 20px auto 20px auto;
+	border-radius: 50px;
+}
+
+.signinbubble:hover {
+	background-color: indigo;
+}
+
+.bigbutton{
+	font-size: 40px;
+	font-weight: 900;
+	text-align: center;
+	padding: 20px;
+}
+
+.pagetitle{
+	color: white;
+	font-size: 30px;
+	font-weight: 900;
+	padding: 20px;
+}
+
+.field{
+	width: 250px;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.main{
+	box-sizing: border-box;
+	-moz-flex: 3 1 70%;
+	-webkit-flex: 3 1 70%;
+	flex: 3 1 70%;
+
+	/*background-color: #eee;*/
+}
+
+.clicky{
+	background-color: #70c8a4;
+	color: white;
+	padding: 15px 0px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 20px;
+	width: 275px;
+	text-align: center;
+	margin: 10px auto 10px auto;
+}
+
+.clicky:hover {
+	background-color:#1b4634;
+}
+
+.feedwrapper {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	
+	width: 100%;
+	margin: auto;
+	/*text-align: center;*/
+	/*overflow:auto;*/
+}
+
+.left {
+	/*box-sizing: border-box;
+	-moz-flex: 3 1 20%;
+	-webkit-flex: 3 1 20%;
+	flex: 3 1 20%;*/
+
+	/*width:60%;
+	background-color: lightgray;
+	float:left;*/
+	/*padding: 10px 10px;*/
+	/*display: inline-block;*/
+	/*margin:5px;*/
+}
+
+.right{
+	/*box-sizing: border-box;
+	-moz-flex: 3 1 40%;
+	-webkit-flex: 3 1 40%;
+	flex: 3 1 60%;*/
+
+	/*background-color: #70c8a4;
+	float:right;
+	width: 30%;*/
+	/*display: inline-block;*/
+	/*margin:5px;*/
+	/*padding: 20px 50px;*/
+}
+
+.main{
+	box-sizing: border-box;
+	-moz-flex: 3 1 70%;
+	-webkit-flex: 3 1 70%;
+	flex: 3 1 70%;
+
+	background-color: #eee;
+}
+
+.alert, .notice {
+	background-color: red;
+	color: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.notice {
+	background-color: lightblue;
+	color: black;
 }

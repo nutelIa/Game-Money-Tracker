@@ -6,6 +6,6 @@ class HomeController < ApplicationController
 			@thing = Player.find(params[:id])
 		end
 		@thing.destroy
-		redirect_to :back
+		redirect_to root_path
 	end
 end

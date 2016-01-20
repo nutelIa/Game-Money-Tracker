@@ -9,19 +9,21 @@
 
 <body>
 
-  <p class="notice"><%= notice %></p>
+  <% if notice %>
+    <p class="notice" ><%= notice %></p>
+  <% end %>
+  <% if alert %>
   <p class="alert"><%= alert %></p>
+  <% end %>
 
 <div class="wrapper">
   <header class="header">
-    <h1 class='button'> <%= link_to "Game Money Tracker", root_path, { :class => 'title'} %> </h1>
-      <% if not user_signed_in? %>
-        <div class="rightbutton"><%= link_to 'Sign Up', new_user_registration_path%></div>
-        <div class="rightbutton"><%= link_to 'Log In', new_user_session_path%></div>
-      <% else %>
-        <div class='rightbutton'><%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %></div>
+    <h1 class='button'> <%= link_to "Game Money Tracker", root_path, class: 'title' %> </h1>
+      <% if user_signed_in? %>
+        <div><%= link_to 'Log Out', destroy_user_session_path, class: 'rightbutton', :method=>'delete' %></div>
+      <div><%= link_to 'Edit User', edit_user_registration_path, class: 'rightbutton' %></div>
       <% end %>
-      <div class='rightbutton'><%= link_to 'About', home_about_path%></div>
+      <div><%= link_to 'About', home_about_path, class: 'rightbutton'%></div>
   </header>
 </div>
 

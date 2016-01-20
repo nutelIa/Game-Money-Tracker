@@ -1,8 +1,16 @@
-<div>Create New Player</div>
-<%= simple_form_for [@game, @player] do |f| %>
-  <%= f.text_field :name, :input_html => { :class => 'field', :id => "name"}, placeholder: 'Name', :label => "" %>
-  <%= f.text_field :color, :input_html => { :class => 'field', :id => "color"}, placeholder: 'i.e. Red', :label => "" %>
-  <%= f.text_field :token, :input_html => { :class => 'field', :id => "token"}, placeholder: 'i.e. Shoe', :label => "" %>
-  <%= f.submit 'Create Player'%>
-<% end %>
+<div class='signinbubble'>
+	<div class='pagetitle' style='text-align:center;'>Create New Player</div>
+	<%= simple_form_for [@game, @player] do |f| %>
+		<div class="form-group">
+	  		<%= f.text_field :name, class: 'field', placeholder: 'Name', :label => "" %>
+	  	</div>
+	  	<div class="form-group" style='color:white; text-align:center;'>
+	  		<%= f.collection_radio_buttons :color, [['red','Red '],['orange','Orange '],['#ffdd42','Yellow '],['green','Green '],['lightgreen','Light Green '],['lightblue', 'Light Blue '],['blue',' Blue '],['indigo','Indigo '],['purple','Purple '],['pink','Pink ']], :first, :last %>
+	  	</div>
+	  	<div class="form-group">
+	  		<%= f.text_field :token, class: 'field', placeholder: 'Token', :label => "" %>
+	  	</div>
+	  <%= f.submit 'Create Player', class: 'clicky'%>
+	<% end %>
+	</div>
 </div>

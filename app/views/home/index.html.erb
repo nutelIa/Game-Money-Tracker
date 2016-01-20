@@ -8,13 +8,21 @@
     <% else %>
     	<% current_user.games.each do |game| %>
 			<div class='gamebox'> 
-				<div class='button', style='font-family:kabel;'><%= link_to game.name, game_path(id: game), { class: 'gameboxtitle'} %></div> <br>
-				 &nbsp;&nbsp;&nbsp;<%= game.players.count %> players 
-				 <br>
+				<div><%= link_to game.name, game_path(id: game), class: 'gameboxtitle' %></div>
+				<br>
+				<div style='padding:0px 7px 7px 0px; float:right;'> <%= game.players.count %> players </div>
 			</div>
     	<% end %>
 	<% end %>
-	<div class='greenbox'> <%= link_to 'New Monopoly Game', games_new_path %> </div>
+	<div class='greenbox'> <%= link_to 'New Monopoly Game', games_new_path, class: 'greenboxtitle' %>
+<% else %>
+	<div class="signinbubble">
+  		<div class="bigbutton"><%= link_to 'Log In', user_session_path %></div>
+  		<div class="bigbutton"><%= link_to 'Sign Up', new_user_registration_path %></div>
+	</div>
+	<div class='signinbubble' style='padding:20px'>
+		<%= link_to 'Why do I need to make an account?', home_about_path %>
+	</div>
 <% end %>
 </body>
 

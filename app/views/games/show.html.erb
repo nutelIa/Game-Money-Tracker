@@ -1,30 +1,53 @@
-<h2 class='title', style='font-family:kabel;'> Session Name: <%= @game.name %> 
-	<div style='display: inline-block;'><%= button_to 'Delete', delete_path(id: @game), method: :patch, data: {confirm: 'Are you sure you want to delete this?' }%></div></h2>
-
-<% if @game.players.empty? %>
-    <p>No Players!</p>
-<% else %>
-    <% @game.players.each do |player| %>
-    	<div class='gamebox', style='background-color:player.color;'>
-			<h3> <%= player.name %> </h3> 
-			money: <%= player.money %>
-			<%= form_tag change_path ({:id => player.id}) do %>
-				<div>
-					<%= text_field_tag 'thing',nil, placeholder: "amount" %>
+<% if current_user && @game.user_id == current_user.id %>
+<!-- <div class='feedwrapper'>
+	<div class='left'> -->
+		<h2 class='title', style='font-family:kabel;'> Session Name: <%= @game.name %> 
+			<div style='display:inline-block;'><%= button_to 'X', delete_path(id: @game), :class => 'delete', method: :patch, data: {confirm: 'Are you sure you want to delete this?'}%></div>
+			<div style='display: inline-block;'><%= button_to 'Edit', edit_game_path(id: @game), class: 'edit', method: :get%></div>
+			<div style='display:inline-block;padding:0px 0px 0px 150px;'>
+				<% if @game.transfer > 0 %>
+					To transfer: <%= @game.transfer %>
+				<% end %>
+			</div>
+		</h2>
+		<% if @game.players.empty? %>
+		    <p>No Players!</p>
+		<% else %>
+		    <% @game.players.each do |player| %>
+		    	<div class='playerbox' style='background-color:<%=player.color%>;'>
+					<h3> <%= player.name %>
+						<div style='display: inline-block;'>
+							<%= button_to 'X', delete_path(id: player), :class => 'delete', method: :patch, data: { confirm: 'Are you sure you want to delete this?' }%>
+						</div>
+						<div style='display: inline-block;'>
+							<%= button_to 'Edit', edit_game_player_path(@game, player), class: 'edit', method: :get%>
+						</div>
+					</h3> 
+					money: <%= player.money %>
+					<%= form_tag change_path ({:id => player.id}) do %>
+						<div>
+							<%= text_field_tag 'thing',nil, placeholder: "amount" %>
+							<%= submit_tag "+", :name => "+", class: 'plus' %>
+							<%= submit_tag "-", :name =>  "-", class: 'minus' %>
+							<%= submit_tag "→", :name =>  "→", class: 'edit' %>
+							<% if @game.transfer > 0 %>
+								<%= submit_tag "←", :name =>  "←", class: 'transferback' %>
+							<% end %>
+						</div>		
+					<% end %>
 				</div>
-				<div>
-					<%= submit_tag "+", :name => "+" %>
-					<%= submit_tag "-", :name =>  "-" %>
-				</div>		
-			<% end %>
-			<%= button_to 'Delete', delete_path(id: player), method: :patch, data: { confirm: 'Are you sure you want to delete this?' }%>
-		</div>
-	    <% end %>
-<% end %>
-
-
-<br>
-<br>
-<% if @game.user_id = current_user %>
-	<div class='greenbox', style='width:105px;'><%= link_to "New Player", new_game_player_path(@game) %></div>
+			 <% end %>
+		<% end %>
+		<% if @game.user_id = current_user %>
+			<div class='greenbox' style='width:145px;'> <%= link_to 'New Player', new_game_player_path(@game), class: 'greenboxtitle' %>
+		<% end %>
+	<!-- </div> -->
+	<!-- <div class='right'>
+		<p>This should be the newsfeed<p>
+	</div> -->
+<!-- </div> -->
+<% elsif current_user %>
+	This is not your game! Please go back to your <%= link_to 'Home Page', root_path, class: 'title';%>
+<% else %>
+	This is not your game! Please <%= link_to 'Log in or Sign Up', root_path, class: 'title';%>
 <% end %>
